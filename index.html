@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MicroNorm研究工作台：上传MetaPhlAn 4物种谱，计算年龄条件生态坐标，比较队列并导出可复核结果。">
+  <title>MicroNorm Research Workbench</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="tool-refined.css">
+  <script src="micronorm-core.js" defer></script>
+  <script src="model-preview.js" defer></script>
+  <script src="demo-profiles.js" defer></script>
+  <script src="tool.js" defer></script>
+</head>
+<body id="top">
+  <header class="top"><div class="shell top-inner"><a class="brand" href="#top"><span class="brand-symbol">M<span>·</span>N</span><small>MICRONORM</small></a><nav><a href="#single">01 单样本</a><a href="#cohort">02 队列比较</a><a href="#methods">03 方法与范围</a></nav><div id="load-status" class="load-status">模型加载中…</div></div></header>
+  <main>
+    <section class="intro shell"><div class="intro-main"><span class="eyebrow">MICRONORM / RESEARCH TOOL · VERSION 0.1</span><h1>肠道微生物组<br>规范参照工作台</h1><p>上传 MetaPhlAn 4 物种谱，将样本放入同年龄、同性别的健康参照。查看物种百分位、生态模块及多变量偏离；按研究背景比较队列。</p><div class="intro-actions"><a href="#single" class="primary-link">分析单样本 <b>↗</b></a><button id="demo-single" class="text-button" type="button">查看演示结果</button></div></div><aside class="model-card"><span class="eyebrow">REFERENCE SNAPSHOT</span><div class="model-card-stats"><div><b>11,105</b><small>健康首访参照</small></div><div><b>801</b><small>物种特征</small></div><div><b>3</b><small>生态模块</small></div></div><p>模型：经验年龄分箱双部分预览版<br>计算：浏览器本地完成 · 文件不上传</p></aside></section>
+    <div class="safety"><div class="shell"><b>研究用途</b><span>本工具报告相对于健康参照的生态位置。CMD与组间差异不代表疾病概率或临床诊断；连续生产模型和完整外部验证仍在进行。</span></div></div>
+    <section class="section shell" id="single"><div class="section-title"><div><span class="eyebrow">01 / INDIVIDUAL PROFILE</span><h2>单样本位置</h2></div><p>输入年龄、性别和完整物种谱。结果包含三模块、CMD、年龄支持与801物种表。</p></div><div class="workspace"><form id="single-form" class="form-card"><div class="form-row"><label>采样年龄（岁）<input id="single-age" type="number" min="0" max="100" step="0.1" value="45" required></label><label>登记性别<select id="single-sex"><option value="female">女性 / female</option><option value="male">男性 / male</option></select></label></div><label class="file-box" for="single-file"><input id="single-file" type="file" accept=".csv,.tsv,.txt,text/plain,text/csv,text/tab-separated-values"><b>选择物种谱文件</b><span>MetaPhlAn 4原生TSV，或 species, abundance_percent</span><small>丰度为百分比；原生表自动读取物种行，未列出物种按零处理。</small></label><label class="confirm-input"><input type="checkbox" id="single-complete" required> 我确认提供完整的已检出物种谱，未列出的物种可按零处理。</label><div class="form-actions"><button class="button-primary" type="submit">计算位置 →</button><button class="button-quiet" id="download-single-template" type="button">下载格式模板 ↓</button></div><p class="form-note" id="single-message" role="status">请选择文件，或点击页首的演示结果。</p></form><div class="result-card" id="single-result"><div class="empty-state"><span>01</span><h3>等待输入</h3><p>上传样本后，这里显示生态坐标、参照支持和可下载报告。</p></div></div></div></section>
+    <section class="section section-tint" id="cohort"><div class="shell"><div class="section-title"><div><span class="eyebrow">02 / COHORT COMPARISON</span><h2>批量评分与两组比较</h2></div><p>每个样本使用自己的年龄和性别评分。提供研究编号时，工作台还会尝试同研究、同性别、近年龄的一对一匹配；未达到支持门槛时只展示描述性比较。</p></div><div class="workspace"><form id="cohort-form" class="form-card"><label class="file-box" for="cohort-file"><input id="cohort-file" type="file" accept=".csv,.tsv,text/csv,text/tab-separated-values"><b>选择队列长格式CSV或TSV</b><span>sample_id, age, sex, group, study, species, abundance_percent</span><small>study列可选；最多250个样本；每个样本的物种分多行输入。</small></label><label class="control-label">参照组名称（选填）<input id="reference-group" type="text" placeholder="例如 Control；须与group列完全一致"></label><label class="confirm-input"><input type="checkbox" id="cohort-complete" required> 我确认每个样本的已检出物种谱完整，未列出的物种可按零处理。</label><div class="form-actions"><button class="button-primary" type="submit">批量评分与比较 →</button><button class="button-quiet" id="download-cohort-template" type="button">下载格式示例 ↓</button></div><p class="form-note" id="cohort-message" role="status">可以先点击下方按钮载入演示队列；未填写参照组时使用文件中首个组。</p><button class="demo-button" id="demo-cohort" type="button">载入四个合成演示样本 ↗</button></form><div class="result-card cohort-result" id="cohort-result"><div class="empty-state"><span>02</span><h3>等待队列输入</h3><p>评分后显示样本表、M1×M2散点、各组均值和CMD分布。</p></div></div></div></div></section>
+    <section class="section shell" id="methods"><div class="section-title"><div><span class="eyebrow">03 / MODEL CARD</span><h2>知道结果从哪里来</h2></div><p>每份报告都携带冻结模型版本、输入支持和解读限制。算法仅在本地浏览器运行，所选文件不上传服务器。</p></div><div class="method-grid"><article><b>检出与阳性丰度</b><p>对每种菌分开估计是否检出和检出后的丰度位置；按年龄与登记性别查询经验参照。</p></article><article><b>三个生态模块</b><p>固定473种网络成员及M1–M3归属。各模块坐标为成员物种的平均参照百分位。</p></article><article><b>联合距离 CMD</b><p>三维模块位置与健康中心的收缩协方差马氏距离。距离没有疾病名称，也不提供诊断阈值。</p></article><article><b>适用范围与下一版</b><p>本版年龄0–100岁；婴幼儿和高龄参考支持不同。国家、技术平台、完整连续模型及临床用途仍需外部验证。</p></article></div><div class="method-footer"><a href="model-card.txt" download>下载完整模型说明 ↓</a></div></section>
+  </main>
+  <footer><div class="shell"><span>MicroNorm Research Workbench · empirical preview v1</span><span>本地计算 · 研究用途 · 非临床诊断</span></div></footer>
+</body>
+</html>
+
