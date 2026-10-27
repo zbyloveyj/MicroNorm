@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,9 +11,10 @@
   <script src="model-preview.js" defer></script>
   <script src="demo-profiles.js" defer></script>
   <script src="tool.js" defer></script>
+  <script src="i18n.js" defer></script>
 </head>
 <body id="top">
-  <header class="top"><div class="shell top-inner"><a class="brand" href="#top"><span class="brand-symbol">M<span>·</span>N</span><small>MICRONORM</small></a><nav><a href="#single">01 单样本</a><a href="#cohort">02 队列比较</a><a href="#methods">03 方法与范围</a></nav><div id="load-status" class="load-status">模型加载中…</div></div></header>
+  <header class="top"><div class="shell top-inner"><a class="brand" href="#top"><span class="brand-symbol">M<span>·</span>N</span><small>MICRONORM</small></a><nav><a href="#single">01 单样本</a><a href="#cohort">02 队列比较</a><a href="#methods">03 方法与范围</a></nav><div id="load-status" class="load-status">模型加载中…</div><div class="language-switch" role="group" aria-label="Language"><button type="button" data-language="en">EN</button><button type="button" data-language="zh">中文</button></div></div></header>
   <main>
     <section class="intro shell"><div class="intro-main"><span class="eyebrow">MICRONORM / RESEARCH TOOL · VERSION 0.1</span><h1>肠道微生物组<br>规范参照工作台</h1><p>上传 MetaPhlAn 4 物种谱，将样本放入同年龄、同性别的健康参照。查看物种百分位、生态模块及多变量偏离；按研究背景比较队列。</p><div class="intro-actions"><a href="#single" class="primary-link">分析单样本 <b>↗</b></a><button id="demo-single" class="text-button" type="button">查看演示结果</button></div></div><aside class="model-card"><span class="eyebrow">REFERENCE SNAPSHOT</span><div class="model-card-stats"><div><b>11,105</b><small>健康首访参照</small></div><div><b>801</b><small>物种特征</small></div><div><b>3</b><small>生态模块</small></div></div><p>模型：经验年龄分箱双部分预览版<br>计算：浏览器本地完成 · 文件不上传</p></aside></section>
     <div class="safety"><div class="shell"><b>研究用途</b><span>本工具报告相对于健康参照的生态位置。CMD与组间差异不代表疾病概率或临床诊断；连续生产模型和完整外部验证仍在进行。</span></div></div>
