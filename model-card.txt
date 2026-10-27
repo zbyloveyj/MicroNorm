@@ -1,0 +1,17 @@
+MicroNorm Research Workbench — Model Card
+
+Model version: empirical_two_part_preview_v1
+Status: research preview; not a clinical device.
+
+Reference: an empirical age-bin and sex-conditioned two-part reference for 801 taxa, based on a broadly healthy first-visit research population. Positive abundance positions are interpolated from reference quantiles. The network contains 473 taxa assigned to M1, M2 and M3; each module score is the mean of member taxon positions. The joint distance CMD is a Mahalanobis distance to a frozen reference geometry.
+
+Input: age 0–100, sex female/male, and a complete MetaPhlAn 4 species relative-abundance profile in percent. Omitted taxa are treated as undetected, not as missing data. Partial taxon lists can produce misleading scores. Country and sequencing-platform support are not evaluated for each uploaded sample. Current sex encoding does not support unrecorded or other values.
+
+Output: descriptive taxon detection probabilities and approximate empirical positions; M1–M3, common and differentiation coordinates, CMD, and age-bin sample count. The score is not a disease probability, diagnostic threshold, or treatment recommendation. CMD and group differences do not establish an individual diagnosis.
+
+Validation: the 801-feature empirical reference predates the 514-taxon continuous prototype. Full candidate selection, model fitting, calibration, and module projection have not all been rerun inside each study or country holdout. A continuous production model and clinical validation are pending. Age-bin sample count alone is not a guarantee of calibration. No automated correction for medication, diet, country, platform or read depth is performed.
+
+Privacy: the scoring interface reads files and computes in the visitor's browser; it does not submit user samples to an application server. Downloaded outputs are written by the browser to the user's device.
+
+Reproducibility: the website and Windows launcher distribute the same core code, model and synthetic examples. Group comparison accepts at most 250 samples per batch. When study labels are available, age/sex/study-matched comparisons use study-equal averages and 10,000 pair sign permutations; M1–M3 receive within-comparison BH correction and CMD is reported as a single uncorrected test.
+
