@@ -1,0 +1,11 @@
+{
+  "interface_version": "0.2",
+  "model_version": "empirical_two_part_preview_v1",
+  "automated_dom_checks": "passed",
+  "pages": 6,
+  "languages": ["en", "zh-CN"],
+  "checks": ["English defaults", "all-page language roundtrips", "results retained across language switches", "single-sample synthetic and file input", "801-species TSV and JSON", "cohort demonstration and JSON", "101-age reference curve CSV", "473 membership TSV", "invalid file clears stale results", "deterministic 30-pair study-equal comparison"],
+  "browser_accessibility": "local overview loaded",
+  "browser_screenshot_verification": "not completed: browser-control safety check could not determine current browser URL",
+  "scientific_revalidation": "Interface update only; no new reference-model fitting or external clinical validation"
+}
